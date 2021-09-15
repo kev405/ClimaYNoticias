@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import NavBars from './components/NavBars';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import News from "./components/News";
+import Weather from "./components/Weather";
+import History from "./components/History";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload Sera el cambio.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Route path="/" render={(history) => (<NavBars history={history}/>)} />
+        <Switch>
+            <Route path="/News" component={News} />
+            <Route path="/Weather" component={Weather} />
+            <Route path="/History" component={History} />
+        </Switch>
+      </Router>
     </div>
   );
 }
