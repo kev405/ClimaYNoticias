@@ -6,47 +6,51 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
     root: {
-      flexGrow: 1,
+        flexGrow: 1,
     },
-  });
+});
 
 const NavBars = (props) => {
 
-        const classes = useStyles();
-        const routes = ["/News", "/Weather", "/History"]
+    const classes = useStyles();
+    const routes = ["/News", "/Weather", "/History"]
 
-        return (
-            <Fragment>
-        <Paper square className={classes.root}>
+    return (
+        <Fragment>
+            <Paper square className={classes.root}>
                 <Tabs
-                    value={props.history.location.pathname}
+                    value=
+                    {
+                        props.history.location.pathname !== "/"
+                            ? props.history.location.pathname
+                            : false}
                     variant="fullWidth"
                     indicatorColor="primary"
                     textColor="primary"
                     aria-label="icon tabs example"
-                >   
-                        <Tab 
-                        label="News" 
-                        value={routes[0]} 
-                        component={Link} 
-                        to={routes[0]} 
-                        />
-                        <Tab 
-                        label="Weather" 
-                        value={routes[1]} 
-                        component={Link} 
+                >
+                    <Tab
+                        label="News"
+                        value={routes[0]}
+                        component={Link}
+                        to={routes[0]}
+                    />
+                    <Tab
+                        label="Weather"
+                        value={routes[1]}
+                        component={Link}
                         to={routes[1]}
-                        />
-                        <Tab 
-                        label="History" 
-                        value={routes[2]} 
-                        component={Link} 
+                    />
+                    <Tab
+                        label="History"
+                        value={routes[2]}
+                        component={Link}
                         to={routes[2]}
-                        />
+                    />
                 </Tabs>
-        </Paper>
+            </Paper>
         </Fragment>
-        )
+    )
 }
 
 export default NavBars;
