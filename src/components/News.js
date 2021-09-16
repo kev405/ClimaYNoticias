@@ -1,8 +1,10 @@
+import SelectCity from './SelectCity'
+
 const News = () => {
 
     return ( 
     
-    <h1>Hola</h1> 
+    <SelectCity /> 
     
     )
     

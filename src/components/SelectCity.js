@@ -105,3 +105,5 @@ const SelectCity = () => {
         </Grid>
     )
 }
+
+export default SelectCity;
