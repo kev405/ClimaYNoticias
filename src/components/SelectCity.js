@@ -1,8 +1,15 @@
 import React from "react";
 import { Grid, TextField, Collapse } from "@material-ui/core";
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { useDispatch, useSelector } from "react-redux";
+import { getCitySelected } from "../store/cityDucks";
 
 const SelectCity = () => {
+    const dispatch = useDispatch();
+
+    const citySelected = useSelector(store => store.citySelected.city)
+    console.log(citySelected)
+
     const [countries, setCountries] = React.useState([]);
     const [regions, setRegions] = React.useState([]);
     const [cities, setCities] = React.useState([]);
@@ -93,6 +100,11 @@ const SelectCity = () => {
                         onChange={(event, newValue) => {
                             setValueSelectCities(newValue);
                             console.log(newValue);
+                        }}
+                        onInputChange={(event, newInputValue) => {
+                            const citySearch = newInputValue.replace(/ /g, "")
+                            console.log(citySearch)
+                            dispatch(getCitySelected(citySearch))
                         }}
                         options={cities}
                         getOptionLabel={(option) => option.city}
